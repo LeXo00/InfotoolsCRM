@@ -1,0 +1,72 @@
+﻿<Window x:Class="AppCRM.PageProduit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppCRM"
+      mc:Ignorable="d"
+      Title="PageProduit" Height="707" Width="980">
+
+    <Window.Resources>
+        <Style x:Key="DeleteButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="#D32F2F"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#B71C1C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#C62828"/>
+                    <Setter Property="BorderBrush" Value="#D32F2F"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#B71C1C"/>
+                    <Setter Property="BorderBrush" Value="#C2185B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#FFE5E5E5" Margin="0,0,0,64">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7"/>
+            <ColumnDefinition Width="709*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Contenu de l'onglet Client -->
+        <DataGrid x:Name="dtgProduit" d:ItemsSource="{Binding observableProduits}" Margin="0,0,0,339" AutoGenerateColumns="False" Grid.ColumnSpan="4" SelectionChanged="dtgProduit_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdProduit}" Width="*" />
+                <DataGridTextColumn Header="Type" Binding="{Binding TypeProduit}" Width="*" />
+                <DataGridTextColumn Header="Prix" Binding="{Binding PrixProduit}" Width="*" />
+                <DataGridTextColumn Header="Nom" Binding="{Binding NomProduit}" Width="*" />
+                <DataGridTextColumn Header="Description" Binding="{Binding DescProduit}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txtNomProd" Grid.Column="3" HorizontalAlignment="Left" Margin="437,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIdProd" Grid.Column="3" HorizontalAlignment="Left" Margin="207,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="txtDescProd" Grid.Column="3" HorizontalAlignment="Left" Margin="318,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtPrixProd" Grid.Column="3" HorizontalAlignment="Left" Margin="207,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtTypeProd" Grid.Column="3" HorizontalAlignment="Left" Margin="437,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Grid.Column="3" Content="ID" HorizontalAlignment="Left" Margin="255,311,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="Type" HorizontalAlignment="Left" Margin="480,311,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="Prix" HorizontalAlignment="Left" Margin="251,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.221,0.656"/>
+        <Label Grid.Column="3" Content="Nom" HorizontalAlignment="Left" Margin="478,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.221,0.656"/>
+        <Label Grid.Column="3" Content="Description" HorizontalAlignment="Left" Margin="343,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.221,0.656"/>
+        <Button x:Name="btnAjouterProduit" Grid.Column="3" Content="Ajouter" HorizontalAlignment="Left" Margin="207,519,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold" Height="40" FontFamily="Cascadia Code SemiBold" Click="btnAjouterProduit_Click"/>
+        <Button x:Name="btnSupprProduit" Grid.Column="3" Content="Supprimé" HorizontalAlignment="Left" Margin="332,519,0,0" Style="{StaticResource DeleteButtonStyle}" VerticalAlignment="Top" Width="120" FontWeight="Bold" Height="40" FontFamily="Cascadia Code SemiBold" Click="btnSupprProduit_Click"/>
+        <Button  x:Name="btnModifierProduit" Grid.Column="3" Content="Modifier" HorizontalAlignment="Left" Margin="457,519,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold" Height="40" FontFamily="Cascadia Code SemiBold" Click="btnModifierProduit_Click"/>
+        <Button Grid.Column="3" Content="Button" HorizontalAlignment="Left" Height="0" Margin="457,763,0,0" VerticalAlignment="Top"/>
+
+        
+    </Grid>
+    
+    
+</Window>
